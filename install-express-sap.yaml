@@ -16,4 +16,4 @@ jobs:
         echo "Deploying Express SAP..."
         az deployment group create \
           --resource-group SAP_RG \
-          --template-file $(Build.SourcesDirectory)/sap-express/Deploy-express.bicep
+          --template-file $(Build.SourcesDirectory)/Deploy-express.bicep
