@@ -1,8 +1,8 @@
-param location string = resourceGroup().location
+param location string = 'switzerlandnorth' // Azure region for deployment
 param vmName string = 'sap-hxe-vm'
 param adminUsername string = 'azureuser'
 @secure()
-param adminPassword string
+param adminPassword string = 'Appr0ved!!' // Use a strong password in production
 
 param vmSize string = 'Standard_E8s_v5' // SAP‑capable x64 VM
 

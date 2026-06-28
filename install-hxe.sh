@@ -12,15 +12,15 @@ set -euo pipefail
 ########################################
 
 # **Mandatory:** HANA system password (SYSTEM, XSA_ADMIN, etc.)
-HXE_MASTER_PASSWORD="${HXE_MASTER_PASSWORD:-ChangeMe123!}"
+HXE_MASTER_PASSWORD="Appr0ved!!"
 
 # **Mandatory:** SID and instance number
-HXE_SID="${HXE_SID:-HXE}"
-HXE_INSTANCE_NUMBER="${HXE_INSTANCE_NUMBER:-90}"
+HXE_SID="BMK"
+HXE_INSTANCE_NUMBER="21"
 
 # **Installer source:**
 # Option 1: Direct download (if SAP provides a URL for HXE installer image)
-HXE_INSTALLER_URL="${HXE_INSTALLER_URL:-https://example.com/HANAEXPRESS_20.tgz}"
+HXE_INSTALLER_URL="https://hanazipfiles.blob.core.windows.net/tgz?sp=r&st=2026-06-28T19:04:42Z&se=2026-07-01T03:19:42Z&spr=https&sv=2026-02-06&sr=c&sig=0ohd2UWl%2FCOKR8TK9y6q404Sgnx9j%2BVtlf7G9mzK1%2Bg%3D"
 
 # Option 2: Pre-mounted/attached volume path (comment URL above and set this)
 HXE_INSTALLER_LOCAL_PATH="${HXE_INSTALLER_LOCAL_PATH:-}"
@@ -106,19 +106,11 @@ download_installer() {
   mkdir -p "$WORKDIR"
   cd "$WORKDIR"
 
-  if [[ -n "$HXE_INSTALLER_LOCAL_PATH" ]]; then
-    log "Using local installer image: $HXE_INSTALLER_LOCAL_PATH"
-    if [[ ! -f "$HXE_INSTALLER_LOCAL_PATH" ]]; then
-      fail "Local installer image not found: $HXE_INSTALLER_LOCAL_PATH"
-    fi
-    cp "$HXE_INSTALLER_LOCAL_PATH" ./HANAEXPRESS_20.tgz
-  else
-    log "Downloading installer from: $HXE_INSTALLER_URL"
-    wget -O HANAEXPRESS_20.tgz "$HXE_INSTALLER_URL" || fail "Failed to download HXE installer."
-  fi
+  log "Downloading installer from: $HXE_INSTALLER_URL"
+  wget -O hxexsa.tgz "$HXE_INSTALLER_URL" || fail "Failed to download HXE installer."
 
   log "Extracting installer..."
-  tar -xvf HANAEXPRESS_20.tgz || fail "Failed to extract installer."
+  tar -xvf hxexsa.tgz || fail "Failed to extract installer."
 }
 
 create_response_file() {

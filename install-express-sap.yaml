@@ -1,0 +1,19 @@
+trigger:
+- main
+pool:
+  vmImage: 'ubuntu-latest'
+
+jobs:
+- job: deploy_express_sap
+  displayName: 'Deploy Express SAP'
+  steps:
+  - task: AzureCLI@2
+    inputs:
+      azureSubscription: 'AzureSAPConnection'
+      scriptType: bash
+      scriptLocation: inlineScript
+      inlineScript: |
+        echo "Deploying Express SAP..."
+        az deployment group create \
+          --resource-group SAP_RG \
+          --template-file $(Build.SourcesDirectory)/sap-express/Deploy-express.bicep
