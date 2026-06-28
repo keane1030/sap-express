@@ -20,7 +20,7 @@ HXE_INSTANCE_NUMBER="21"
 
 # **Installer source:**
 # Option 1: Direct download (if SAP provides a URL for HXE installer image)
-HXE_INSTALLER_URL="https://hanazipfiles.blob.core.windows.net/tgz?sp=r&st=2026-06-28T19:04:42Z&se=2026-07-01T03:19:42Z&spr=https&sv=2026-02-06&sr=c&sig=0ohd2UWl%2FCOKR8TK9y6q404Sgnx9j%2BVtlf7G9mzK1%2Bg%3D"
+HXE_INSTALLER_URL="https://hanazipfiles.blob.core.windows.net/tgz/hxexsa.tgz?sp=r&st=2026-06-28T19:29:53Z&se=2026-07-03T03:44:53Z&spr=https&sv=2026-02-06&sr=b&sig=wj27FehGA70wWS2l2%2F2gLEGTPySKO%2Fhkg4qOBDJ15dI%3D"
 
 # Option 2: Pre-mounted/attached volume path (comment URL above and set this)
 HXE_INSTALLER_LOCAL_PATH="${HXE_INSTALLER_LOCAL_PATH:-}"
