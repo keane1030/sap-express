@@ -120,7 +120,7 @@ resource hxeInstall 'Microsoft.Compute/virtualMachines/extensions@2023-09-01' = 
     settings: {
       fileUris: [
         // Replace with your storage account URL containing the installer + script
-        'https://<yourstorage>.blob.core.windows.net/hxe/install-hxe.sh'
+        'https://hanazipfiles.blob.core.windows.net/tgz/install-hxe.sh?sp=r&st=2026-06-28T19:52:57Z&se=2026-07-03T04:07:57Z&spr=https&sv=2026-02-06&sr=b&sig=6EZ6Q%2BPmGz7kKUym6MxOHiLLKFprrIDpgHcfaON4EXI%3D'
       ]
       commandToExecute: 'bash install-hxe.sh'
     }
