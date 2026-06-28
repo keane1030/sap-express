@@ -43,12 +43,14 @@ fail() {
 }
 
 require_root() {
+  echo "Checking for root privileges..."
   if [[ "$(id -u)" -ne 0 ]]; then
     fail "Script must be run as root."
   fi
 }
 
 check_os() {
+  echo "Checking OS..."
   log "Checking OS..."
   if [[ -f /etc/os-release ]]; then
     . /etc/os-release
@@ -59,6 +61,7 @@ check_os() {
 }
 
 install_prereqs() {
+  echo "Installing prerequisites..."
   log "Installing prerequisites..."
 
   if command -v zypper >/dev/null 2>&1; then
@@ -103,6 +106,8 @@ prepare_filesystem() {
 }
 
 download_installer() {
+  echo "Downloading HXE installer..."
+  echo "Installer URL: $HXE_INSTALLER_URL"
   mkdir -p "$WORKDIR"
   cd "$WORKDIR"
 
