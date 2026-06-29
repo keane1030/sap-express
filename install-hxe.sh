@@ -166,7 +166,7 @@ run_installer() {
   #
   # Adjust this command to match your specific HXE image documentation.
   cd "$WORKDIR"
-  "sudo $installer_bin" 
+  sudo $installer_bin
 #  \
 #    -f "$WORKDIR/response_hxe.txt" \
 #    -i silent \
