@@ -144,7 +144,7 @@ run_installer() {
   # Common patterns: ./HXEInstaller, ./setup.bin, or ./hxe_installer/setup.bin
   local installer_bin
 
-  if [[ -x "$WORKDIR/setup_hxe.sh" ]]; then
+  if [[ -x "$WORKDIR/hxexsa/setup_hxe.sh" ]]; then
     installer_bin="./setup_hxe.sh"
   elif [[ -x "$WORKDIR/setup.bin" ]]; then
     installer_bin="$WORKDIR/setup.bin"
@@ -165,7 +165,7 @@ run_installer() {
   #   HXEInstaller --batch --read_password_from_file=<file> ...
   #
   # Adjust this command to match your specific HXE image documentation.
-  cd "$WORKDIR"
+  cd "$WORKDIR/hxexsa"
   sudo $installer_bin
 #  \
 #    -f "$WORKDIR/response_hxe.txt" \
