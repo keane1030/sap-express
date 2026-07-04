@@ -20,7 +20,7 @@ HXE_INSTANCE_NUMBER="21"
 
 # **Installer source:**
 # Option 1: Direct download (if SAP provides a URL for HXE installer image)
-HXE_INSTALLER_URL="https://hanazipfiles.blob.core.windows.net/tgz/hxexsa.tgz?sp=r&st=2026-06-28T19:29:53Z&se=2026-07-03T03:44:53Z&spr=https&sv=2026-02-06&sr=b&sig=wj27FehGA70wWS2l2%2F2gLEGTPySKO%2Fhkg4qOBDJ15dI%3D"
+HXE_INSTALLER_URL="https://hanazipfiles.blob.core.windows.net/tgz/hxe.tgz?sp=r&st=2026-07-04T18:57:24Z&se=2026-07-10T03:12:24Z&spr=https&sv=2026-02-06&sr=b&sig=bvr69pnHOCzi12QTsLo05IdAMdMZEl40zttpeGIm1%2B4%3D"
 
 # Option 2: Pre-mounted/attached volume path (comment URL above and set this)
 HXE_INSTALLER_LOCAL_PATH="${HXE_INSTALLER_LOCAL_PATH:-}"
@@ -112,10 +112,10 @@ download_installer() {
   cd "$WORKDIR"
 
   log "Downloading installer from: $HXE_INSTALLER_URL"
-  wget -O hxexsa.tgz "$HXE_INSTALLER_URL" || fail "Failed to download HXE installer."
+  wget -O hxe.tgz "$HXE_INSTALLER_URL" || fail "Failed to download HXE installer."
 
   log "Extracting installer..."
-  tar -xvf hxexsa.tgz || fail "Failed to extract installer."
+  tar -xvf hxe.tgz || fail "Failed to extract installer."
 }
 
 create_response_file() {
@@ -144,10 +144,10 @@ run_installer() {
   # Common patterns: ./HXEInstaller, ./setup.bin, or ./hxe_installer/setup.bin
   local installer_bin
 
-  if [[ -x "$WORKDIR/hxexsa/setup_hxe.sh" ]]; then
-    installer_bin="./setup_hxe.sh"
-  elif [[ -x "$WORKDIR/setup.bin" ]]; then
-    installer_bin="$WORKDIR/setup.bin"
+  if [[ -x "$WORKDIR/hxe/setup_hxe.sh" ]]; then
+    installer_bin="./hxe/setup_hxe.sh"
+  elif [[ -x "$WORKDIR/setup_hxe.sh" ]]; then
+    installer_bin="$WORKDIR/setup_hxe.sh"
   else
     # Try to find something executable
     installer_bin="$(find "$WORKDIR" -maxdepth 3 -type f -name 'HXEInstaller' -o -name 'setup.bin' | head -n 1 || true)"
@@ -165,7 +165,6 @@ run_installer() {
   #   HXEInstaller --batch --read_password_from_file=<file> ...
   #
   # Adjust this command to match your specific HXE image documentation.
-  cd "$WORKDIR/hxexsa"
   sudo $installer_bin
 #  \
 #    -f "$WORKDIR/response_hxe.txt" \
