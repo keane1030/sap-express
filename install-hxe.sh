@@ -233,10 +233,10 @@ main() {
   install_prereqs
   prepare_filesystem
   download_installer
-  create_response_file
-  run_installer
-  post_install_config
-  summary
+#  create_response_file
+#  run_installer
+#  post_install_config
+#  summary
 }
 
 main "$@"
